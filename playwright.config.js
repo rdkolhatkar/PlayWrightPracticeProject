@@ -30,9 +30,11 @@ export default defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    // trace: 'on-first-retry', // // optional but very useful
     headless: false,
-    viewport: null
+    viewport: null,
+    screenshot: 'only-on-failure',   // 👈 screenshots added to HTML report
+    video: 'retain-on-failure',      // optional but very useful
   },
 
   /* Configure projects for major browsers */
