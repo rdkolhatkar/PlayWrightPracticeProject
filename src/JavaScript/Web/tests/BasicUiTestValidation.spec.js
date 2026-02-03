@@ -1,3 +1,4 @@
+// To run this code use command : npx playwright test src/JavaScript/Web/tests/BasicUiTestValidation.spec.js
 import { test, expect } from '@playwright/test';
 
 test('OrangeHRM demo website', async ({ browser }) => {
@@ -31,4 +32,3 @@ test('OrangeHRM demo website', async ({ browser }) => {
 
   await browser.close();
 });
-//span[text()='Leave'] Leave tab
