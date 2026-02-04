@@ -2,7 +2,9 @@
   "name": "playwrightpracticeproject",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "orangeHRM": "npx playwright test src/JavaScript/Web/tests/BasicUiTestValidation.spec.js"
+  },
   "author": "Ratnakar Kolhatkar",
   "license": "ISC",
   "description": "",

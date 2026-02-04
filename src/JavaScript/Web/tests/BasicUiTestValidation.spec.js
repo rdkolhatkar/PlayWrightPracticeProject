@@ -30,5 +30,10 @@ test('OrangeHRM demo website', async ({ browser }) => {
     page.getByRole('heading', { name: 'Personal Details' })
   ).toBeVisible({ timeout: 20000 });
 
+  // Click on the contact details tab
+  await page.locator("//a[text()='Contact Details']").click();
+  // Enter the address line 1 for street 1
+  await page.locator("(//div[contains(@class,'oxd-form-row')]/div[1]/div[1]/div[1]/div[2])[1]/input").fill("123 Main St");
+  await page.locator("(//div[contains(@class,'oxd-input-group oxd-input-field-bottom-space')]/div[2])[3]/input").fill("Pune");  
   await browser.close();
 });
