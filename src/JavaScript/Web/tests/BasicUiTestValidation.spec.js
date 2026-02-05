@@ -34,6 +34,29 @@ test('OrangeHRM demo website', async ({ browser }) => {
   await page.locator("//a[text()='Contact Details']").click();
   // Enter the address line 1 for street 1
   await page.locator("(//div[contains(@class,'oxd-form-row')]/div[1]/div[1]/div[1]/div[2])[1]/input").fill("123 Main St");
-  await page.locator("(//div[contains(@class,'oxd-input-group oxd-input-field-bottom-space')]/div[2])[3]/input").fill("Pune");  
+  await page.locator("(//div[contains(@class,'oxd-input-group oxd-input-field-bottom-space')]/div[2])[3]/input").fill("Pune");
+  // Select the country as India
+  // const dropdown = await page.locator("//div[@class='oxd-grid-3 orangehrm-full-width-grid']/div[6]/div/div[2]/div/div/div[2]/i");
+  // await dropdown.click();
+  // const indiaOption = await dropdown.locator('text=India');
+  // await indiaOption.scrollIntoViewIfNeeded();
+  // await indiaOption.click();
+  // await dropdown.selectOption("India");
+
+  // // Open country dropdown
+  // await page.locator("//label[text()='Country']/../following-sibling::div//i").click();
+
+  // // Locate actual dropdown list container
+  // const dropdownList = page.locator(".oxd-select-dropdown");
+
+  // // Scroll until India is visible
+  // while (!(await dropdownList.getByText('India').isVisible())) {
+  //   await dropdownList.evaluate(el => el.scrollBy(0, 200));
+  //   await page.waitForTimeout(200);
+  // }
+
+  // // Click India
+  // await dropdownList.getByText('India').click();
+
   await browser.close();
 });
