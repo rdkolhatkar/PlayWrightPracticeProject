@@ -1,0 +1,235 @@
+## Where do these versions come from in Playwright (Node.js world)?
+
+```json
+"@playwright/test": "^1.57.0",
+"@types/node": "^25.0.9",
+"@serenity-js/cli": "^3.35.1",
+"@serenity-js/core": "^3.35.1",
+"@serenity-js/serenity-bdd": "^3.35.1",
+"@serenity-js/playwright": "^3.35.1"
+```
+
+These **do NOT come from Playwright itself**.
+They come from **npm (Node Package Manager)**.
+
+👉 **npm registry = Maven Central (Java equivalent)**
+
+---
+
+## Java vs Playwright dependency world (simple mapping)
+
+| Java                     | Playwright / Node.js                 |
+| ------------------------ | ------------------------------------ |
+| Maven Central Repository | **npm registry**                     |
+| `pom.xml`                | **`package.json`**                   |
+| `<dependency>`           | **`dependencies / devDependencies`** |
+| `mvn install`            | **`npm install` / `npm i`**          |
+| groupId + artifactId     | **package name**                     |
+| version                  | **version**                          |
+
+---
+
+## Where exactly do we find these dependencies?
+
+### 👉 Official source: **[https://www.npmjs.com](https://www.npmjs.com)**
+
+This is the **single source of truth**.
+
+---
+
+## Example 1: Playwright
+
+Search on npm:
+
+```
+@playwright/test
+```
+
+You’ll find:
+
+* Latest version
+* Install command
+* Documentation
+* Changelog
+
+Install command shown on npm:
+
+```bash
+npm install -D @playwright/test
+```
+
+---
+
+## Example 2: Serenity + Playwright
+
+Search:
+
+```
+@serenity-js/playwright
+```
+
+You’ll see:
+
+* Compatible Serenity versions
+* Installation instructions
+* Peer dependencies
+
+Install command:
+
+```bash
+npm install -D @serenity-js/core @serenity-js/cli @serenity-js/serenity-bdd @serenity-js/playwright
+```
+
+📌 That’s how those versions entered your `package.json`.
+
+---
+
+## How does `package.json` get updated?
+
+You usually **DO NOT type versions manually**.
+
+Instead, you run a command 👇
+
+### Example:
+
+```bash
+npm install -D @playwright/test
+```
+
+npm will:
+
+1. Fetch latest stable version
+2. Add it to `package.json`
+3. Download files into `node_modules`
+4. Create/update `package-lock.json`
+
+---
+
+## Java-style copy-paste equivalent in Playwright
+
+### Java way:
+
+```xml
+<dependency>
+  <groupId>org.apache.poi</groupId>
+  <artifactId>poi</artifactId>
+  <version>5.2.3</version>
+</dependency>
+```
+
+### Playwright / Node way:
+
+```bash
+npm install exceljs
+```
+
+OR with version:
+
+```bash
+npm install exceljs@4.4.0
+```
+
+This automatically updates:
+
+```json
+"dependencies": {
+  "exceljs": "^4.4.0"
+}
+```
+
+---
+
+## Example: Adding ExcelJS (step by step)
+
+### 1️⃣ Search on npm
+
+Go to:
+
+```
+https://www.npmjs.com/package/exceljs
+```
+
+### 2️⃣ Install
+
+```bash
+npm install exceljs
+```
+
+### 3️⃣ package.json updates automatically
+
+```json
+"dependencies": {
+  "exceljs": "^4.4.0"
+}
+```
+
+### 4️⃣ Use in your test
+
+```js
+import ExcelJS from 'exceljs';
+
+const workbook = new ExcelJS.Workbook();
+```
+
+No manual version management needed 💡
+
+---
+
+## devDependencies vs dependencies (important interview topic)
+
+| Type              | When to use                        |
+| ----------------- | ---------------------------------- |
+| `devDependencies` | Test tools, Playwright, Serenity   |
+| `dependencies`    | App logic libs like exceljs, axios |
+
+Example:
+
+```bash
+npm install -D @playwright/test
+npm install exceljs
+```
+
+---
+
+## How npm knows what version to install?
+
+This symbol:
+
+```json
+"^3.35.1"
+```
+
+Means:
+
+> Install **3.35.1 or any compatible minor/patch update**
+
+Same idea as Maven’s version ranges.
+
+---
+
+## What happens when you run `npm install`?
+
+Same as `mvn install`:
+
+1. Reads `package.json`
+2. Downloads dependencies
+3. Stores them in `node_modules`
+4. Locks exact versions in `package-lock.json`
+
+---
+
+## Where should YOU look when adding new libraries?
+
+✔ **npmjs.com**
+✔ Official docs of the library
+✔ GitHub README of the project
+
+---
+
+## One-line mental model (remember this)
+
+> **npmjs.com is Maven Central**
+> **package.json is pom.xml**
+> **npm install is mvn install**
+
+---
