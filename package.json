@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "orangeHRM": "npx playwright test src/JavaScript/Web/tests/BasicUiTestValidation.spec.js",
+    "test:RegistrationForm": "cucumber-js --profile RegistrationForm",
     "test": "npx playwright test",
     "serenity:report": "npx serenity-js run",
     "serenity:open": "npx serenity-js serve"
@@ -12,11 +13,12 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.57.0",
+    "@cucumber/cucumber": "^12.6.0",
+    "@playwright/test": "^1.58.2",
     "@types/node": "^25.0.9",
-    "@serenity-js/cli": "^3.35.1",
-    "@serenity-js/core": "^3.35.1",
-    "@serenity-js/serenity-bdd": "^3.35.1",
-    "@serenity-js/playwright": "^3.35.1"
+    "allure-commandline": "^2.36.0",
+    "allure-playwright": "^3.4.5",
+    "expect": "^30.2.0",
+    "playwright": "^1.58.2"
   }
 }
