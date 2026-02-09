@@ -5,6 +5,7 @@
   "scripts": {
     "orangeHRM": "npx playwright test src/JavaScript/Web/tests/BasicUiTestValidation.spec.js",
     "test:RegistrationForm": "cucumber-js --profile RegistrationForm",
+    "test:OrangeHRM": "cucumber-js --profile OrangeHRM",
     "test": "npx playwright test",
     "serenity:report": "npx serenity-js run",
     "serenity:open": "npx serenity-js serve"
