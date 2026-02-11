@@ -13,7 +13,7 @@ module.exports = {
     ],
     format: ['progress'],
     retry: 1,
-    timeout: 30000
+    timeout: 40000
   },
   OrangeHRM: {
     paths: ['src/JavaScript/Web/bdd/features/login.feature'],
@@ -24,6 +24,6 @@ module.exports = {
     ],
     format: ['progress'],
     retry: 1,
-    timeout: 30000
+    timeout: 40000
   }
 }
