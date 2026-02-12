@@ -1,29 +1,39 @@
-module.exports = {
-    default: {
-      require: [],
-      format: ['progress', 'html:reports/cucumber-report.html'],
-      retry: 2
-    },
-  RegistrationForm: {
-    paths: ['src/JavaScript/Web/bdd/Features/**/*.feature'],
+export default {
+
+  default: {
     require: [
-      'src/JavaScript/Web/bdd/StepsDefinitions/**/*.js',
-      'src/JavaScript/Web/bdd/PageObjects/**/*.js',
-      'src/JavaScript/Web/bdd/Support/**/*.js'
+      "src/JavaScript/Web/bdd/StepsDefinitions/*.js",
+      "src/JavaScript/Web/bdd/Support/*.js"
     ],
-    format: ['progress'],
-    retry: 1,
-    timeout: 40000
+    format: ['progress', 'html:reports/cucumber-report.html'],
+    retry: 2,
+    timeout: 60000
   },
-  OrangeHRM: {
-    paths: ['src/JavaScript/Web/bdd/features/login.feature'],
+
+  RegistrationForm: {
+    paths: [
+      "src/JavaScript/Web/bdd/features/Registration.feature"
+    ],
     require: [
-      'src/JavaScript/Web/bdd/StepsDefinitions/loginSteps.js',
-      'src/JavaScript/Web/bdd/PageObjects/LoginPage.js',
-      'src/JavaScript/Web/bdd/Support/hooks.js'
+      "src/JavaScript/Web/bdd/StepsDefinitions/RegistrationSteps.js",
+      "src/JavaScript/Web/bdd/Support/hooks.js"
     ],
     format: ['progress'],
     retry: 1,
-    timeout: 40000
+    timeout: 60000
+  },
+
+  OrangeHRM: {
+    paths: [
+      "src/JavaScript/Web/bdd/features/OrangeHRM.feature"
+    ],
+    require: [
+      "src/JavaScript/Web/bdd/StepsDefinitions/OrangeHrmSteps.js",
+      "src/JavaScript/Web/bdd/Support/Hooks.js"
+    ],
+    format: ['progress'],
+    retry: 1,
+    timeout: 60000
   }
-}
+
+};

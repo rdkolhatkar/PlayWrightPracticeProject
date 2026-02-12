@@ -1,29 +1,49 @@
-import { Given, When, Then } from '@cucumber/cucumber';
-import { chromium } from 'playwright';
-import RegistrationPage from '../PageObjects/RegistrationPage.js';
+import { Given, When, Then } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+import RegistrationPage from "../PageObjects/RegistrationPage.js";
 
-let browser;
-let page;
 let registrationPage;
 
-Given('user is on registration page', { timeout: 30 * 1000 }, async function () {
-  browser = await chromium.launch({ headless: false });
-  page = await browser.newPage();
-  registrationPage = new RegistrationPage(page);
+Given("User launches the registration demo website", async function () {
+  registrationPage = new RegistrationPage(this.page);
   await registrationPage.navigate();
 });
 
-When('user enters valid registration details', async function () {
-  await registrationPage.fillRegistrationForm();
+When("User enters first name {string}", async function (firstName) {
+  await registrationPage.enterFirstName(firstName);
 });
 
-When('user submits the form', async function () {
+When("User enters last name {string}", async function (lastName) {
+  await registrationPage.enterLastName(lastName);
+});
+
+When("User selects gender as {string}", async function (gender) {
+  await registrationPage.selectGender(gender);
+});
+
+When("User enters email {string}", async function (email) {
+  await registrationPage.enterEmail(email);
+});
+
+When("User enters mobile number {string}", async function (mobile) {
+  await registrationPage.enterMobile(mobile);
+});
+
+When("User enters date of birth {string}", async function (dob) {
+  await registrationPage.enterDOB(dob);
+});
+
+When("User enters address {string}", async function (address) {
+  await registrationPage.enterAddress(address);
+});
+
+When("User submits the registration form", async function () {
   await registrationPage.submitForm();
 });
 
-Then('registration should be successful', async function () {
+Then("Registration should be successful", async function () {
   await registrationPage.verifySuccess();
-  await browser.close();
 });
+
 // npx cucumber-js -p RegistrationForm --retry 2
 // npm run test:RegistrationForm
