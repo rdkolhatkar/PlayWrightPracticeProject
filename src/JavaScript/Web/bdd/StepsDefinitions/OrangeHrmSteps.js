@@ -24,6 +24,10 @@ Then('Personal Details page should be displayed', async function () {
   await orangePage.verifyPersonalDetails();
 });
 
+When('User clicks on Contact Details tab', async function () {
+  await orangePage.clickContactDetails();
+});
+
 When(
   'User enters address details {string} {string} {string} {string}',
   async function (street1, street2, city, state) {

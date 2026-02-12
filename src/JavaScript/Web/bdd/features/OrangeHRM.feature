@@ -1,4 +1,4 @@
-@orangehrm
+@orangehrm 
 Feature: OrangeHRM Demo Website Contact Details Update
 
   Scenario Outline: Login and update contact details in OrangeHRM

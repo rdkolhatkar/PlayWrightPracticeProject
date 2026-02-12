@@ -1,4 +1,4 @@
-export default {
+module.exports = {
 
   default: {
     require: [
@@ -29,7 +29,7 @@ export default {
     ],
     require: [
       "src/JavaScript/Web/bdd/StepsDefinitions/OrangeHrmSteps.js",
-      "src/JavaScript/Web/bdd/Support/Hooks.js"
+      "src/JavaScript/Web/bdd/Support/hooks.js"
     ],
     format: ['progress'],
     retry: 1,

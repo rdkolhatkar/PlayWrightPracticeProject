@@ -1,4 +1,4 @@
-// npx cucumber-js -p RegistrationForm --retry 2
+// npx cucumber-js --profile RegistrationForm --retry 2
 // npm run test:RegistrationForm
 //npx cucumber-js --tags "@registration"
 

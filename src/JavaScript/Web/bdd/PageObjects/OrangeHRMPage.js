@@ -1,8 +1,8 @@
-// npx cucumber-js --p OrangeHRM
+// npx cucumber-js --profile OrangeHRM
 // npx cucumber-js --tags "@orangehrm"
 // npm run test:OrangeHRM
 export default class OrangeHRMPage {
- constructor(page) {
+  constructor(page) {
     this.page = page;
 
     this.usernameInput = page.getByPlaceholder("Username");
@@ -19,10 +19,15 @@ export default class OrangeHRMPage {
     );
   }
 
+  // async navigateToSite() {
+  //   await this.page.goto("https://opensource-demo.orangehrmlive.com/");
+  //   await this.page.waitForLoadState('networkidle');
+  // }
+
   async navigateToSite() {
-    await this.page.goto("https://opensource-demo.orangehrmlive.com/");
-    await this.page.waitForLoadState('networkidle');
+    await this.page.goto("https://opensource-demo.orangehrmlive.com/", { waitUntil: "domcontentloaded" });
   }
+
 
   async login(username, password) {
     await this.usernameInput.fill(username);
