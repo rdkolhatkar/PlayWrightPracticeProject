@@ -1,5 +1,9 @@
 import { Before, After } from '@cucumber/cucumber';
 import { chromium } from '@playwright/test';
+import { setDefaultTimeout } from '@cucumber/cucumber';
+// import { Before, After, setDefaultTimeout } from '@cucumber/cucumber';
+
+setDefaultTimeout(60 * 1000);
 
 Before(async function () {
   this.browser = await chromium.launch({ headless: false });

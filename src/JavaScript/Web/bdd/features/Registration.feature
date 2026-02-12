@@ -1,4 +1,4 @@
-@registration
+@registration @smoke
 Feature: Registration Form Validation
 
   Scenario: User fills and submits the registration form successfully
@@ -12,3 +12,9 @@ Feature: Registration Form Validation
     And User enters address "Pune Maharashtra India"
     And User submits the registration form
     Then Registration should be successful
+
+
+
+
+
+    
