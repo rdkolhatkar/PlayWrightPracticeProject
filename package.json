@@ -7,6 +7,7 @@
     "test:RegistrationForm": "cucumber-js --profile RegistrationForm",
     "test:OrangeHRM": "cucumber-js --profile OrangeHRM",
     "test": "npx playwright test",
+    "debug": "cross-env PWDEBUG=1 cucumber-js --profile OrangeHRM",
     "serenity:report": "npx serenity-js run",
     "serenity:open": "npx serenity-js serve"
   },
@@ -19,6 +20,7 @@
     "@types/node": "^25.0.9",
     "allure-commandline": "^2.36.0",
     "allure-playwright": "^3.4.5",
+    "cross-env": "^10.1.0",
     "expect": "^30.2.0",
     "playwright": "^1.58.2"
   }
