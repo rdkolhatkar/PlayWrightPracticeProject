@@ -15,9 +15,13 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
 
- reporter: [
-    ['list'],
-    ['allure-playwright']
+ // ✅ Multiple professional reporters
+  reporter: [
+    ['list'],                                       // CLI reporter
+    ['html', { open: 'never' }],                    // HTML report
+    ['json', { outputFile: 'test-results.json' }],  // JSON report
+    ['junit', { outputFile: 'junit-results.xml' }], // CI/CD report
+    ['allure-playwright']                           // Allure report
   ],
 
   use: {
@@ -25,7 +29,8 @@ export default defineConfig({
     viewport: null,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'on-first-retry'
+    // trace: 'on-first-retry'
+    trace: 'on',
   },
 
   projects: [
