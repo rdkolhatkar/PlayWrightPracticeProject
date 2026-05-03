@@ -1,0 +1,29 @@
+1) npx playwright test --headed  
+→ Runs tests in visible browser mode so you can watch execution.
+
+2) npx playwright test --headless  
+→ Runs tests in background without opening browser UI (faster execution).
+
+3) npx playwright test  
+→ Runs all tests in default mode (headless by default).
+
+4) npx playwright test --debug  
+→ Runs tests in debug mode with inspector, slow motion, and step-by-step control.
+
+5) npx playwright codegen http://google.com  
+→ Opens a browser and records user actions to auto-generate Playwright test scripts.
+
+6) npx playwright test --ui  
+→ Launches Playwright Test UI for interactive test execution, debugging, and results viewing.
+
+7) npx playwright test --project=chromium  
+→ Runs tests only on Chromium (Chrome/Edge engine)
+
+8) npx playwright test --project=firefox  
+→ Runs tests only on Firefox
+
+9) npx playwright test --project=webkit  
+→ Runs tests only on WebKit (Safari-like)
+
+10) npx playwright test --project=chromium --project=firefox  
+→ Runs tests on both Chromium and Firefox

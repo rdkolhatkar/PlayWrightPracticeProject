@@ -1,0 +1,20 @@
+| Browser                    | Driver Name    | Class Used in Code       | Maintained By     |
+| -------------------------- | -------------- | ------------------------ | ----------------- |
+| **Google Chrome**          | ChromeDriver   | `ChromeDriver`           | Google            |
+| **Mozilla Firefox**        | GeckoDriver    | `FirefoxDriver`          | Mozilla           |
+| **Microsoft Edge**         | EdgeDriver     | `EdgeDriver`             | Microsoft         |
+| **Safari**                 | SafariDriver   | `SafariDriver`           | Apple             |
+| **Internet Explorer (IE)** | IEDriverServer | `InternetExplorerDriver` | Selenium (legacy) |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Browser                    | Selenium Driver | Selenium Class           | Playwright Support   | Playwright Launch |
+|----------------------------|-----------------|--------------------------|----------------------|-------------------|
+| Google Chrome              | ChromeDriver    | ChromeDriver             | Yes (Chromium)       | chromium.launch() |
+| Mozilla Firefox            | GeckoDriver     | FirefoxDriver            | Yes (Firefox)        | firefox.launch()  |
+| Microsoft Edge             | EdgeDriver      | EdgeDriver               | Yes (Chromium)       | chromium.launch() |
+| Safari                     | SafariDriver    | SafariDriver             | ❌ Not Supported     | N/A               |
+| Internet Explorer (IE)     | IEDriverServer  | InternetExplorerDriver   | ❌ Not Supported     | N/A               |
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
