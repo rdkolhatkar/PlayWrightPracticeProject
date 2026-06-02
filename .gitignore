@@ -12,3 +12,16 @@ reports/
 screenshots/
 videos/
 trace/
+
+.github/
+.idea/
+.vscode/
+*.log
+*.tmp
+*.xml
+*.json
+*.html
+*.zip
+*.tar.gz
+
+
