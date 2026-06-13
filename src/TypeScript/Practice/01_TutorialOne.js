@@ -1,3 +1,4 @@
+"use strict";
 // To initialize the TypeScript project, run the following command in the terminal:
 // npm init -y
 // npm install typescript --save-dev
@@ -17,20 +18,16 @@
 // node <filename>.js  -> Replace <filename> with the name of the compiled JavaScript file you want to run. 
 // To run a specific TypeScript File without compiling entire project run command "npx tsc 01_TutorialOne.ts --ignoreConfig" in the terminal. This will compile only the specified TypeScript file and generate a corresponding JavaScript file in the same directory. You can then run the generated JavaScript file using Node.js as described above.
 // npx tsc 01_TutorialOne.ts --ignoreConfig this command will compile only the specified TypeScript file and generate a corresponding JavaScript file in the same directory. You can then run the generated JavaScript file using Node.js as described above.   
-
-let message: string = "Hello, TypeScript!";
+let message = "Hello, TypeScript!";
 console.log(message);
 console.log(typeof message);
-
-let age: number = 25;
+let age = 25;
 console.log(age);
 console.log(typeof age);
-
-let isStudent: boolean = true;
+let isStudent = true;
 console.log(isStudent);
 console.log(typeof isStudent);
-
-let anything: any = "This can be any type";
+let anything = "This can be any type";
 console.log(anything);
 console.log(typeof anything);
 anything = 42;
@@ -39,36 +36,28 @@ console.log(typeof anything);
 anything = false;
 console.log(anything);
 console.log(typeof anything);
-
-let unknownValue: unknown = "This is an unknown type";
+let unknownValue = "This is an unknown type";
 console.log(unknownValue);
 console.log(typeof unknownValue);
-
-let undefinedValue: undefined = undefined;
+let undefinedValue = undefined;
 console.log(undefinedValue);
 console.log(typeof undefinedValue);
-
 // Type inference is TypeScript's ability to automatically determine the type of a variable, function return value, or expression without you explicitly writing the type.
 let inferredString = "This is a string"; // TypeScript infers this as a string in compile time.
 console.log(inferredString);
 console.log(typeof inferredString);
-
-function helloWorld():void { 
+function helloWorld() {
     // The void type is used to indicate that a function does not return a value. It is often used for functions that perform side effects, such as logging to the console or modifying global state, where there is no meaningful return value.
     console.log("Hello, World!");
 }
-
-function add(a: number, b: number): number {
+function add(a, b) {
     // The number type is used to represent both integer and floating-point numbers. It is a primitive type in TypeScript and can be used to perform various mathematical operations.
     return a + b;
 }
-
-function findLength(str: string): number {
+function findLength(str) {
     // The string type is used to represent textual data. It is a primitive type in TypeScript and can be used to perform various operations on strings, such as concatenation, slicing, and searching.
     return str.length;
 }
-
 helloWorld();
 console.log(add(5, 10));
 console.log(findLength("Hello, TypeScript!"));
-
