@@ -20,38 +20,45 @@
 
 let message: string = "Hello, TypeScript!";
 console.log(message);
-console.log(typeof message);
+console.log(typeof message); // Output: string
 
 let age: number = 25;
 console.log(age);
-console.log(typeof age);
+console.log(typeof age); // Output: number
 
 let isStudent: boolean = true;
 console.log(isStudent);
-console.log(typeof isStudent);
+console.log(typeof isStudent); // Output: boolean
 
 let anything: any = "This can be any type";
 console.log(anything);
-console.log(typeof anything);
+console.log(typeof anything); // Output: string
 anything = 42;
 console.log(anything);
-console.log(typeof anything);
+console.log(typeof anything); // Output: number
 anything = false;
 console.log(anything);
-console.log(typeof anything);
+console.log(typeof anything); // Output: boolean
 
 let unknownValue: unknown = "This is an unknown type";
 console.log(unknownValue);
-console.log(typeof unknownValue);
+console.log(typeof unknownValue); // Output: string
+unknownValue = 42;
+console.log(unknownValue);
+console.log(typeof unknownValue); // Output: number 
 
 let undefinedValue: undefined = undefined;
 console.log(undefinedValue);
-console.log(typeof undefinedValue);
+console.log(typeof undefinedValue); // Output: undefined
+
+let nullValue: null = null;
+console.log(nullValue);
+console.log(typeof nullValue); // Output: object (this is a known quirk in JavaScript)
 
 // Type inference is TypeScript's ability to automatically determine the type of a variable, function return value, or expression without you explicitly writing the type.
 let inferredString = "This is a string"; // TypeScript infers this as a string in compile time.
 console.log(inferredString);
-console.log(typeof inferredString);
+console.log(typeof inferredString); // Output: string
 
 function helloWorld():void { 
     // The void type is used to indicate that a function does not return a value. It is often used for functions that perform side effects, such as logging to the console or modifying global state, where there is no meaningful return value.
@@ -68,7 +75,7 @@ function findLength(str: string): number {
     return str.length;
 }
 
-helloWorld();
-console.log(add(5, 10));
-console.log(findLength("Hello, TypeScript!"));
+helloWorld(); // Output: Hello, World!
+console.log(add(5, 10)); // Output: 15
+console.log(findLength("Hello, TypeScript!")); // Output: 18
 
