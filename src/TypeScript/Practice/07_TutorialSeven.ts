@@ -15,10 +15,17 @@ let strLength: number = (someValue as string).length;
 console.log(strLength); // Output: 16
 
 // Example 2: Using type assertions with a DOM element
-let myCanvas = document.getElementById("myCanvas") as HTMLCanvasElement;    
-if (myCanvas) {
-    let context = myCanvas.getContext("2d");
-    // Now you can use the context variable with the correct type
+if (typeof document !== "undefined") {
+
+    let myCanvas = document.getElementById("myCanvas") as HTMLCanvasElement;
+
+    if (myCanvas) {
+        let context = myCanvas.getContext("2d");
+        console.log("Canvas found");
+    }
+
+} else {
+    console.log("Document object not available (Node.js environment)");
 }
 
 // Example 3: Using type assertions with a union type
