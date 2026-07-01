@@ -104,3 +104,49 @@ let sum = function(a: number, b: number): number {
 }
 let result : number = sum(10, 20);
 console.log(result); // Output: 30
+
+// Arrow Functions in TypeScript
+// Arrow Function '=>' is also known as Fat Arrow Function. It is a shorter syntax for writing functions in TypeScript. Arrow functions are often used in situations where you want to preserve the context of 'this' or when you want to write concise function expressions.
+// It is similar to Lambda expressions in other programming languages. Arrow functions can have a single expression or a block of code. If the function body contains a single expression, you can omit the curly braces and the return keyword. If the function body contains multiple statements, you need to use curly braces and explicitly return a value if needed.
+// Arrow Function is an anonymous function without name. It does not have its own 'this' context, but instead inherits 'this' from the surrounding lexical scope. This makes arrow functions particularly useful in scenarios where you want to maintain the context of 'this', such as in event handlers or callbacks.
+// Simple Arrow Function in TypeScript
+/*
+() => {
+    console.log("This is a simple arrow function.");
+}
+*/
+// Arrow Function with Single Expression in TypeScript
+const square = (x: number): number => x * x;
+console.log(square(5)); // Output: 25
+// Arrow Function with Multiple Statements in TypeScript
+const divide = (a: number, b: number): number => {
+    if (b === 0) {
+        throw new Error("Division by zero is not allowed.");
+    }   
+    return a / b;
+}
+
+divide(10, 2); // Output: 5
+let sumOfNumbers = (a: number, b: number): number => a + b;
+console.log(sumOfNumbers(10, 20)); // Output: 30
+
+class Person {
+    name: string;
+    age: number;
+
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+
+    displayInfo = (): void => {
+        console.log(`Name: ${this.name}, Age: ${this.age}`);
+    }
+
+    getData = () => console.log(`Name: ${this.name}, Age: ${this.age}`);
+}
+
+let person1 = new Person("Alice", 30);
+person1.displayInfo(); // Output: Name: Alice, Age: 30
+let person2 = new Person("Bob", 25);
+person2.getData(); // Output: Name: Bob, Age: 25
