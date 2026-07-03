@@ -60,7 +60,47 @@ console.log("Regular Expression:", regex); // Output: Regular Expression: /ab+c/
     - let: Block-scoped variable. Can be updated but not re-declared within the same scope.
     - const: Block-scoped variable. Cannot be updated or re-declared. Must be initialized at the time of declaration. 
 */
-// Declare a variable using let
+/*
+    Scope = Where a variable can be accessed (used) in your program.
+    1. Global Scope:
+    -> A variable declared outside any function or block is in the global scope.
+    -> It can be accessed from anywhere in the program.
+    -> Think of it as a public notice board that everyone can read.
+    -> Example: 
+        let company = "OpenAI"; // Global scope
+        function showCompany() {
+            console.log(company); // Accessible here
+        }
+        showCompany();
+        console.log(company); // Accessible here too
+        // Output:
+        // OpenAI
+        // OpenAI
+    2. Function Scope:
+    -> A variable declared with var, let, or const inside a function belongs to that function.
+    -> It can be used only inside that function.
+    -> Think of it as a personal notebook that only the function can read.
+    -> Example:
+        function greet() {
+        let message = "Hello!";
+        console.log(message); // Accessible here
+        }
+        greet();
+        console.log(message); // Error: message is not defined
+
+    3. Block Scope:
+    -> A variable declared with let or const inside { } belongs only to that block.
+    -> It cannot be accessed outside the block.
+    -> Think of it as a private room that only people inside can enter.
+    -> Example: 
+        {
+            let age = 25; // Block scope
+            console.log(age); // Accessible here
+        }
+        console.log(age); // Error: age is not defined
+*/
+
+// Declare a variable using 'let'
 let score = 10; // Declare a variable 'score' and assign it the value 10
 console.log("Initial Score:", score); // Output: Initial Score: 10
 score = 20; // Update the value of 'score' to 20
@@ -70,15 +110,25 @@ console.log("Player Name:", playerName); // Output: Player Name: Bob
 playerName = "Charlie"; // Update the value of 'playerName' to "Charlie"
 console.log("Updated Player Name:", playerName); // Output: Updated Player Name: Charlie
 // In this example, we declare variables 'score' and 'playerName', and we change their values during the program execution.
-// Declare a variable using var
+
+// Declare a variable using 'var'
 var totalScore = 10; 
 console.log("Initial Total Score:", totalScore); // Output: 10
-totalScore = 25; // Update value
+totalScore = 25; // Update value by reinitializing the variable
 console.log("Updated Total Score:", totalScore); // Output: 25
 var userName = "Bob"; // Declare another var variable
 console.log("User Name:", userName); // Output: Bob
 userName = "Charlie"; // Update value
 console.log("Updated User Name:", userName); // Output: Charlie
+// Redeclaring a variable using 'var' is allowed, but it can lead to unexpected behavior, so it's generally recommended to use 'let' or 'const' for variable declarations in modern JavaScript.
+var browser = "Chrome"; // Declare a variable using var
+console.log("Browser:", browser); // Output: Chrome
+var browser = "Firefox"; // Redeclare the variable using var
+console.log("Updated Browser:", browser); // Output: Firefox
+var g;
+console.log("g:", g); // Output: g: undefined
+
+
 // Declare a constant using const
 const maxScore = 100; 
 console.log("Max Score:", maxScore); // Output: 100
