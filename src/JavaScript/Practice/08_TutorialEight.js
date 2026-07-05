@@ -50,37 +50,45 @@ console.log("Last number:", numbers[numbers.length - 1]);
 // ---- Add elements ----
 numbers.push(50);  // Add at end
 console.log("After push:", numbers);
+// Before push: [ 10, 20, 30, 40 ]
 // Output: After push: [ 10, 20, 30, 40, 50 ]
 
 numbers.unshift(5); // Add at beginning
 console.log("After unshift:", numbers);
+// Before unshift: [ 10, 20, 30, 40, 50 ]
 // Output: After unshift: [ 5, 10, 20, 30, 40, 50 ]
 
 // ---- Remove elements ----
-numbers.pop(); // Remove from end
+numbers.pop(); // Remove from end (Removes last element of the array)
 console.log("After pop:", numbers);
+// Before pop: [ 5, 10, 20, 30, 40, 50 ]
 // Output: After pop: [ 5, 10, 20, 30, 40 ]
 
-numbers.shift(); // Remove from start
+numbers.shift(); // Remove from start (Removes first element of the array)
 console.log("After shift:", numbers);
+// Before shift: [ 5, 10, 20, 30, 40 ]
 // Output: After shift: [ 10, 20, 30, 40 ]
 
 // ---- Slice & Splice ----
 let subArray = numbers.slice(1, 3); // from index 1 to 2
 console.log("Slice(1,3):", subArray);
+// Before slice: [ 10, 20, 30, 40 ]
 // Output: Slice(1,3): [ 20, 30 ]
 
 numbers.splice(1, 2, 25, 35); // remove 2 elements at index 1 and insert 25, 35
 console.log("After splice:", numbers);
+// Before splice: [ 10, 20, 30, 40 ]
 // Output: After splice: [ 10, 25, 35, 40 ]
 
 // ---- Concat ----
 let newArray = numbers.concat([50, 60]);
 console.log("After concat:", newArray);
+// Before concat: [ 10, 25, 35, 40 ]
 // Output: After concat: [ 10, 25, 35, 40, 50, 60 ]
 
 // ---- Join ----
 console.log("Joined with '-':", numbers.join("-"));
+// Before join: [ 10, 25, 35, 40 ]
 // Output: Joined with '-': 10-25-35-40
 
 // ======================= ARRAY SEARCH =======================
@@ -88,6 +96,21 @@ console.log("Joined with '-':", numbers.join("-"));
 // indexOf → first occurrence
 console.log("Index of 35:", numbers.indexOf(35));
 // Output: Index of 35: 2
+
+let colorsArray = ["red", "green", "blue", "green", "red", "yellow"];
+console.log("Index of 'green':", colorsArray.indexOf("green"));
+// Output: Index of 'green': 1
+console.log("Index of 'yellow':", colorsArray.indexOf("yellow"));
+// Output: Index of 'yellow': 5
+console.log("Index of 'purple':", colorsArray.indexOf("purple"));
+// Output: Index of 'purple': -1
+// Counting occurrences of 'red'
+let countRed = colorsArray.filter(color => color === "red").length;
+console.log("Count of 'red':", countRed);
+// Output: Count of 'red': 2
+let redSecondIndex = colorsArray.indexOf("red", colorsArray.indexOf("red") + 1); // here counting will be done by using indexOf to find the first occurrence and then searching for the next occurrence starting from the index after the first one.
+console.log("Second index of 'red':", redSecondIndex);
+// Output: Second index of 'red': 4
 
 // lastIndexOf → last occurrence
 numbers.push(25);
