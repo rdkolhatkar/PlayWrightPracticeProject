@@ -220,3 +220,96 @@ console.log(colors); // Output: [ 'red', 'green', 'blue' ]
     - Arrays are reference types
     - const array can still be modified, just cannot be reassigned
 */
+
+//==================================================================================
+
+// Difference between map(), filter(), reduce() and forEach() in JavaScript:
+
+/*
+    - map(): Creates a new array by applying a function to each element of the original array. It does not modify the original array.
+    - filter(): Creates a new array containing elements that pass a specified test (condition). It does not modify the original array.
+    - reduce(): Reduces the array to a single value by applying a function to each element, accumulating the result. It does not modify the original array.
+    - forEach(): Executes a provided function once for each array element. It does not create a new array and does not return a value. It is mainly used for side effects.
+*/  
+
+let sampleArray = [1, 2, 3, 4, 5];
+
+// Map example: map() creates a new array by applying a function to each element of the original array. In this case, we are doubling each number in the sampleArray.
+let mappedArray = sampleArray.map((num) => num * 2);
+console.log("Mapped Array (doubled):", mappedArray); // Output: [2, 4, 6, 8, 10]
+// use map() to convert farenheit to celsius
+let fahrenheitArray = [32, 68, 100, 212];
+let celsiusArray = fahrenheitArray.map((f) => ((f - 32) * 5) / 9);
+console.log("Celsius Array:", celsiusArray); // Output: [0, 20, 37.77777777777778, 100]
+// Converting kilometers to miles using map() with a function that takes kilometers as input and returns miles. The conversion factor is 1 kilometer = 0.621371 miles.
+let kilometersArray = [1, 5, 10, 42.195]; // 42.195 km is a marathon
+function kmToMiles(km) {
+    return km * 0.621371;
+}
+let milesArray = kilometersArray.map(kmToMiles);
+console.log("Miles Array:", milesArray); // Output: [0.621371, 3.106855, 6.21371, 26.218757145]
+
+// Filter example: filter() creates a new array containing elements that pass a specified test (condition). In this case, we are filtering out even numbers from the sampleArray.
+let filteredArray = sampleArray.filter((num) => num % 2 === 0);
+console.log("Filtered Array (even numbers):", filteredArray); // Output: [2, 4]
+let employees = [
+    { name: "Alice", age: 25, department: "HR" },
+    { name: "Bob", age: 30, department: "Engineering" },
+    { name: "Charlie", age: 28, department: "HR" },
+    { name: "David", age: 35, department: "Engineering" },
+    { name: "Eve", age: 22, department: "Marketing" },
+];
+employees.filter((employee) => employee.department === "HR").forEach((employee) => console.log(employee.name)); // Output: Alice Charlie
+// using filter() find all employees whose age is greater than or equal to 25 and print their names
+let employeesAbove25 = employees.filter((employee) => employee.age >= 25);
+console.log("Employees aged 25 or older:");
+employeesAbove25.forEach((employee) => console.log(employee.name)); // Output: Alice Bob Charlie David
+
+let newEmployee = employees.filter((emp) => {
+    return emp.age > 30 && emp.department === "Engineering";
+});
+console.log("Employees older than 30 in Engineering:", newEmployee); //output: Employees older than 30 in Engineering: [ { name: 'David', age: 35, department: 'Engineering' } ]
+
+// Reduce example: reduce() reduces the array to a single value by applying a function to each element, accumulating the result. In this case, we are summing all the numbers in the sampleArray.
+// General Syntax of reduce():
+/*
+    array.reduce((accumulator, currentValue) => {
+        // return updated accumulator
+    }, initialValue);
+
+    accumulator → Stores the running (accumulated) result.
+    currentValue → The current array element being processed.
+    initialValue → The starting value of the accumulator.
+*/
+let sum = sampleArray.reduce((accumulator, currentValue) => accumulator + currentValue, 0); 
+console.log("Sum of sampleArray:", sum); // Output: 15
+
+let numbersToReduce = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let product = numbersToReduce.reduce((accumulator, currentValue) => accumulator * currentValue, 1);
+console.log("Product of numbersToReduce:", product); // Output: 3628800
+
+// Finding Max number in an array using reduce()
+let top = [5, 12, 8, 21, 3, 15, 33, 4, 1, 2, 40, 3];
+top.reduce((max, current) => {
+    if (current > max) {
+        max = current;
+    }else {
+        max = max;
+    }
+    return max;
+}, top[0]); // Output: 40
+
+
+let cartItems = [
+    { name: "Laptop", price: 1000 },
+    { name: "Mouse", price: 50 },
+    { name: "Keyboard", price: 80 },
+];
+let totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+console.log("Total price of cart items:", totalPrice); // Output: 1130
+
+// ForEach example: forEach() executes a provided function once for each array element. In this case, we are logging each number in the sampleArray to the console.
+console.log("ForEach example:");
+sampleArray.forEach((num) => console.log(num)); // Output: 1 2 3 4 5
+
+
