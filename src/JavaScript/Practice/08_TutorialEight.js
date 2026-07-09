@@ -312,4 +312,84 @@ console.log("Total price of cart items:", totalPrice); // Output: 1130
 console.log("ForEach example:");
 sampleArray.forEach((num) => console.log(num)); // Output: 1 2 3 4 5
 
+// every() and some() methods in JavaScript:
+/*
+    - every(): Tests whether all elements in the array pass the provided test (condition). Returns true if all elements pass, otherwise false.
+    - some(): Tests whether at least one element in the array passes the provided test (condition). Returns true if at least one element passes, otherwise false.
+*/
 
+let ages = [18, 22, 25, 30, 35];
+// Check if all ages are 18 or older using every()
+let allAdults = ages.every((age) => age >= 18);
+console.log("All are adults:", allAdults); // Output: true
+
+let allAdult = ages.every((age) => age <= 18); // If all ages are less than or equal to 18, it will return false because not all ages are less than or equal to 18.
+console.log("All are adults:", allAdult); // Output: false 
+
+// Check if at least one age is 30 or older using some()
+let hasSenior = ages.some((age) => age >= 30);
+console.log("At least one is a senior:", hasSenior); // Output: true
+
+let hasSenior = ages.some((age) => age <= 3); // If at least one age is less than or equal to 3, it will return false because none of the ages are less than or equal to 3.
+console.log("At least one is a senior:", hasSenior); // Output: false
+
+// find() and findIndex() methods in JavaScript:
+/*
+    - find(): Returns the value of the first element in the array that satisfies the provided testing function. If no elements satisfy the testing function, undefined is returned.
+    - findIndex(): Returns the index of the first element in the array that satisfies the provided testing function. If no elements satisfy the testing function, -1 is returned.
+*/
+let total = [5, 12, 8, 21, 3, 15, 33, 4, 1, 2, 40, 3];
+// Find the first number greater than 20 using find()
+let firstGreaterThan20 = total.find((num) => num > 20);
+console.log("First number greater than 20:", firstGreaterThan20); // Output: 21
+
+let OddNum = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
+let numOne = OddNum.find((num) => num%2 === 0); // Here we are using the find() method to find the first even number in the OddNum array. The find() method takes a callback function that checks if the current number is even (i.e., divisible by 2). It returns the first element that satisfies this condition, or undefined if no such element is found.
+console.log("First even number in OddNum array:", numOne); // Output: undefined
+
+// Find the index of the first number greater than 20 using findIndex()
+let firstGreaterThan20Index = total.findIndex((num) => num > 20); // Here we are using the findIndex() method to find the index of the first number greater than 20 in the total array. The findIndex() method takes a callback function that checks if the current number is greater than 20. It returns the index of the first element that satisfies this condition, or -1 if no such element is found.
+console.log("Index of first number greater than 20:", firstGreaterThan20Index); // Output: 3
+
+// indexOf(), lastIndexOf() methods in JavaScript:
+/*
+    - indexOf(): Returns the index of the first occurrence of a specified value in the array. If the value is not found, it returns -1.
+    - lastIndexOf(): Returns the index of the last occurrence of a specified value in the array. If the value is not found, it returns -1.
+*/
+let numbers = [5, 12, 8, 21, 3, 15, 33, 4, 1, 2, 40, 3];
+let index = numbers.indexOf(3); // Find the index of the first occurrence of 3
+console.log("Index of first occurrence of 3:", index); // Output: 4
+
+let lastIndex = numbers.lastIndexOf(3); // Find the index of the last occurrence of 3
+console.log("Index of last occurrence of 3:", lastIndex); // Output: 11
+
+// reverse() method in JavaScript:
+/*
+    - reverse(): Reverses the order of the elements in the array in place. The first array element becomes the last, and the last becomes the first. 
+    - It modifies the original array and returns a reference to the same array.     
+*/
+let arr = ["Apple", "Banana", "Cherry", "Date", "Elderberry"];
+console.log("Original array:", arr);
+arr.reverse(); // Reverse the array in place
+console.log("Reversed array:", arr); // Output: Reversed array: [ 'Elderberry', 'Date', 'Cherry', 'Banana', 'Apple' ]
+
+// flat(), sort(), and fill() methods in JavaScript:
+/*
+    - flat(): Creates a new array with all sub-array elements concatenated into it recursively up to the specified depth. It flattens nested arrays.    
+    - sort(): Sorts the elements of an array in place and returns the sorted array. The default sort order is ascending, built upon converting the elements into strings.
+    - fill(): Fills all the elements of an array from a start index to an end index with a static value. It modifies the original array.
+*/
+let nestedArray = [1, [2, 3], [4, [5, 6]]];
+let flattenedArray = nestedArray.flat(2); // Flatten the array up to depth 2
+console.log("Flattened array:", flattenedArray); // Output: Flattened array: [ 1, 2, 3, 4, 5, 6 ]
+
+let unsortedArray = [3, 1, 4, 1, 5, 9, 2, 6, 5];
+unsortedArray.sort(); // Sort the array in ascending order
+console.log("Sorted array:", unsortedArray); // Output: Sorted array: [ 1, 1, 2, 3, 4, 5, 5, 6, 9 ] 
+
+let unsortedStringArray = ["banana", "apple", "cherry", "date"];
+unsortedStringArray.sort(); // Sort the array of strings in ascending order
+console.log("Sorted string array:", unsortedStringArray); // Output: Sorted string array: [ 'apple', 'banana', 'cherry', 'date' ]
+
+let fillArray = new Array(5).fill(0); // Create an array of length 5 and fill it with 0
+console.log("Filled array:", fillArray); // Output: Filled array: [ 0, 0, 0, 0, 0 ]
