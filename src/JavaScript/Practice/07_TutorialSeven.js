@@ -126,6 +126,7 @@
 // ======================= FUNCTION EXPRESSION =======================
 /*
     Function stored in a variable
+    Also called as anonymous function (no name)
 */
 
 {
@@ -172,6 +173,20 @@
         Output:
         Anonymous Function
     */
+
+    const numbers = [1, 2, 3, 4, 5];
+    const doubled = numbers.map(function (num) {
+        return num * 2;
+    }); 
+    console.log(doubled);
+    // output: [2, 4, 6, 8, 10]
+
+    const numberArray = [1, 2, 3, 4, 5];
+    const squares = numberArray.map((num) => {
+        return num * num;
+    }); 
+    console.log(squares); // output: [1, 4, 9, 16, 25]
+
 }
 
 // ======================= ARROW FUNCTIONS (ES6) =======================
@@ -309,6 +324,10 @@
     */
 }
 
+// Function Constructor
+const substract = new Function('a', 'b', 'return a - b;');
+console.log(substract(10, 4)); // Output: 6
+
 // ======================= FUNCTION ARGUMENTS OBJECT =======================
 {
     function showArgs() {
@@ -377,6 +396,7 @@
     - A higher-order function either:
         1. Accepts a function as an argument
         2. Returns a function
+        3. A function that takes one or more functions as arguments, or returns a function as its result.
 
     Example:
 */
@@ -395,10 +415,24 @@
     */
 }
 
+// Example of Higher Order Function that accepts a function as an argument
+
+function addition(a, b) {
+    return a + b;
+}
+
+function operateAddition(functionName, a, b) {
+    functionName(a, b);
+}
+
+operateAddition(addition, 10, 20); // Output: 30
+
 // ======================= IIFE (Immediately Invoked Function) =======================
 /*
     - A function that runs immediately after creation
     - Useful to create private scope
+    - Syntax: (function() { ... })();
+    - Self invoking function
 */
 
 {
@@ -453,3 +487,36 @@
     - IIFE runs immediately and creates private scope
     - Pure functions have no side effects and predictable output
 */
+
+// ======================= GENERATOR FUNCTION =======================
+/*
+    - A generator function can pause its execution and resume later
+    - Syntax: function* name() { ... }
+    - Use yield to pause and return a value
+    - it will generate sequence of values on demand
+*/
+
+function* generateNumbers() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+const generator = generateNumbers();
+console.log(generator.next().value); // Output: 1
+console.log(generator.next().value); // Output: 2
+console.log(generator.next().value); // Output: 3
+
+// ======================= RECURSIVE FUNCTION =======================
+/*
+    - A function that calls itself
+    - Useful for problems that can be broken down into smaller subproblems
+*/  
+function factorial(n) {
+    if (n === 0 || n === 1) {
+        return 1;
+    }   
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // Output: 120
