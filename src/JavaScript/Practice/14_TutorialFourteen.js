@@ -1,3 +1,6 @@
+// To run this file:
+// node src/JavaScript/Practice/14_TutorialFourteen.js
+
 // Arrow Functions in JavaScript
 
 // SYNTAX: (param) => expression
