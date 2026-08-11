@@ -38,4 +38,47 @@ randomNumberPromise
     Promise is fulfilled: Promise is fulfilled! Random value: 0.854826944148763
     Promise is rejected: Promise is rejected! Random value: 0.12391464917765527
 
-*/        
+*/      
+
+// Chaining Promises in JavaScript:
+// Promises can be chained together to perform a series of asynchronous operations in a sequential manner.
+// Each .then() method returns a new promise, allowing you to chain multiple .then() calls together.
+// This is useful for performing a series of dependent asynchronous tasks.
+
+function getEvenNumber(value, delay){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(value % 2 === 0){
+                resolve(value);
+            }
+            else{
+                reject(new Error("The number is not even: " + value));
+            }
+        }, delay);
+    })
+}
+
+// Example of chaining promises
+
+getEvenNumber(4, 1000)
+    .then(result => {
+        console.log("First promise fulfilled with value: " + result);
+        return getEvenNumber(3, 2000); // Chaining another promise
+    })
+    .then(result => {
+        console.log("Second promise fulfilled with value: " + result);
+        return getEvenNumber(result + 5, 1000); // Chaining another promise
+    })
+    .then(result => {
+        console.log("Third promise fulfilled with value: " + result);
+    })
+    .catch(error => {
+        console.error("Promise rejected: " + error.message);
+    });
+
+/*
+    Output:
+    First promise fulfilled with value: 4
+    Promise is fulfilled: Promise is fulfilled! Random value: 0.8606540562389924
+    Promise rejected: The number is not even: 3
+*/
