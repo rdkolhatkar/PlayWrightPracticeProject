@@ -82,3 +82,135 @@ getEvenNumber(4, 1000)
     Promise is fulfilled: Promise is fulfilled! Random value: 0.8606540562389924
     Promise rejected: The number is not even: 3
 */
+
+// Promise.all() in JavaScript: It is commonly used when you want to perform multiple asynchronous operations in parallel and wait for all of them to complete before moving on.
+
+const functionOne = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Function One completed!");
+        }, 2000);
+    });
+};
+
+const functionTwo = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Function Two completed!");
+        }, 2000);
+    });
+};
+
+const functionThree = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Function Three completed!");
+        }, 2000);
+    });
+};
+
+Promise.all(
+    [
+        functionOne(),
+        functionTwo(),
+        functionThree()
+    ]
+).then(dataArray => {
+    console.log("All promises fulfilled: ", dataArray); 
+}).catch(error => {
+    console.error("One of the promises rejected: ", error);
+});
+
+/*
+    Output:
+    All promises fulfilled:  [
+        'Function One completed!',
+        'Function Two completed!',
+        'Function Three completed!'
+    ]
+*/
+
+// Another Example
+
+const functionDataOne = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const data = [1, 2, 3, 4, 5];
+            resolve(data);
+        }, 2000);
+    });
+};
+
+const functionDataTwo = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const data = ["item1", "item2", "item3"];
+            resolve(data);
+        }, 2000);
+    });
+};
+
+const functionDataThree = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const data = { message: "Function Three completed!" };
+            resolve(data);
+        }, 2000);
+    });
+};
+
+Promise.all(
+    [
+        functionDataOne(),
+        functionDataTwo(),
+        functionDataThree()
+    ]
+).then(dataArray => {
+    console.log("All promises fulfilled: ", dataArray); 
+}).catch(error => {
+    console.error("One of the promises rejected: ", error);
+});
+
+/*
+    Output:
+    All promises fulfilled:  [
+        [ 1, 2, 3, 4, 5 ],
+        [ 'item1', 'item2', 'item3' ],
+        { message: 'Function Three completed!' }
+    ]
+*/
+
+// Another example with rejection
+ 
+const getDataOne = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const data = [1, 2, 3, 4, 5];
+            resolve(data);
+        }, 2000);
+    });
+}
+
+const getDataTwo = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject("Error: Data is Not available!");
+        }, 2000);
+    });
+}
+
+Promise.all(
+    [
+        getDataOne(),   
+        getDataTwo()
+    ]
+).then(dataArray => {
+    console.log("All promises fulfilled: ", dataArray);
+}).catch(error => {
+    console.error("One of the promises rejected: ", error);
+});
+
+/*
+    Output:
+    One of the promises rejected:  Error: Data is Not available!
+*/
