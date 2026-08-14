@@ -214,3 +214,28 @@ Promise.all(
     Output:
     One of the promises rejected:  Error: Data is Not available!
 */
+
+// Promise.AllSettled() in JavaScript: It is used when you want to wait for all promises to settle (either fulfilled or rejected) and get the results of all promises, regardless of whether they were fulfilled or rejected.
+
+Promise.allSettled(
+    [
+        getDataOne(),
+        getDataTwo()
+    ]
+).then(results => {
+    console.log("All promises settled: ", results);
+    results.forEach(result => {
+        if (result.status === "fulfilled") {
+            console.log("Fulfilled: ", result.value);
+        } else {
+            console.error("Rejected: ", result.reason);
+        }
+    });
+});
+/*
+    Output:
+    All promises settled:  [
+        { status: 'fulfilled', value: [ 1, 2, 3, 4, 5 ] },
+        { status: 'rejected', reason: 'Error: Data is Not available!' }
+    ]   
+*/
