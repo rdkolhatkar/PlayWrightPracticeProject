@@ -239,3 +239,60 @@ Promise.allSettled(
         { status: 'rejected', reason: 'Error: Data is Not available!' }
     ]   
 */
+
+// Promise.race() in JavaScript: It is used when you want to get the result of the first promise that settles (either fulfilled or rejected) among a group of promises.
+// if we have two promises, one that resolves after 2 seconds and another that rejects after 1 second, the Promise.race() will return the result of the promise that settles first, which in this case will be the rejected promise.
+
+const resolveAfterTwoSeconds = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Resolved after 2 seconds");
+    }, 2000);   
+});
+
+const rejectAfterOneSecond = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject("Rejected after 1 second");
+    }, 1000);
+});
+
+Promise.race([resolveAfterTwoSeconds, rejectAfterOneSecond])
+    .then(result => {
+        console.log("Promise.race fulfilled: ", result);
+    })
+    .catch(error => {
+        console.error("Promise.race rejected: ", error);
+    });
+
+/*
+    Output:
+    Promise.race rejected:  Rejected after 1 second
+*/
+
+const resolvedPromise = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Resolved promise");
+        }, 1000);
+    });
+};
+
+const rejectedPromise = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {  
+            reject("Rejected promise");
+        }, 5000);
+    });
+};
+
+Promise.race([resolvedPromise(), rejectedPromise()])
+    .then(result => {
+        console.log ("Promise.race fulfilled: ", result);
+    })
+    .catch(error => {
+        console.error("Promise.race rejected: ", error);
+    });
+
+/*
+    Output:
+    Promise.race rejected:  Rejected promise
+*/
