@@ -296,3 +296,45 @@ Promise.race([resolvedPromise(), rejectedPromise()])
     Output:
     Promise.race rejected:  Rejected promise
 */
+
+// Promise.any() in JavaScript: It is used when you want to get the result of the first promise that fulfills (resolves) among a group of promises. If all promises are rejected, it will return an AggregateError containing all the rejection reasons.
+// If at least one promise fulfills, Promise.any() will return the value of the first fulfilled promise. However, unlike Promise.race(), it doesn't reject immediately when a promise is rejected; it waits for all promises to settle and only rejects if all promises are rejected.
+
+const getMessage = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("Message received from 1st promise");
+        }, 500);
+    });
+};
+
+const getUsers = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject("Error: Users not found from 2nd promise");
+        }, 200);
+    });
+};
+
+const getProducts = () => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject("Error: Products not found from 3rd promise");
+        }, 1000);
+    });
+};
+
+Promise.any([getMessage(), getUsers(), getProducts()])
+    .then(result => {
+        console.log("Promise.any fulfilled: ", result); 
+    })
+    .catch(error => {
+        console.error("Promise.any rejected: ", error);
+    });
+
+/*
+    Output:
+    Promise.any fulfilled:  Message received from 1st promise
+*/
+// If all promises are rejected, it will return an AggregateError containing all the rejection reasons.
+
