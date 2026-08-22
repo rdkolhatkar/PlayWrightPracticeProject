@@ -933,3 +933,139 @@ executeUsingCallbacks();
 
 // 5. Async/Await with a simulated payment failure
 // executeWithPaymentError();
+
+// -------------------------------------------------------------------------------------------------------------------
+
+// Example of callback hell in JavaScript:
+
+/*
+    All the below steps are asynchronous operations that need to be performed in sequence to make a cup of coffee.
+    1) Start the coffee machine -> 2 seconds
+    2) Grind the coffee beans -> 1 second
+    3) Boil water -> 1.5 seconds
+    4) Pour boiled water into the cup -> 0.5 second
+    5) Add grounded coffee into the cup -> 0.5 second
+    6) Stir the coffee -> 0.3 second
+    7) Serve the coffee and enjoy
+*/
+
+// ---------------------------------------------------------------------------------------------------------
+
+function startCoffeeMachine(callback) {
+
+    console.log("1. Starting the coffee machine...");
+
+    setTimeout(function () {
+
+        console.log("1. Coffee machine is ready.");
+
+        callback("Coffee machine is ready");
+
+    }, 2000);
+}
+
+
+function grindCoffeeBeans(callback) {
+
+    console.log("2. Starting to grind coffee beans...");
+
+    setTimeout(function () {
+
+        console.log("2. Coffee beans are ground.");
+
+        callback("Ground coffee");
+
+    }, 1000);
+}
+
+
+function boilWater(callback) {
+
+    console.log("3. Starting to boil water...");
+
+    setTimeout(function () {
+
+        console.log("3. Water is boiled.");
+
+        callback("Boiled water");
+
+    }, 1500);
+}
+
+
+function pourBoilingWaterIntoCup(boiledWater, callback) {
+
+    console.log("4. Starting to pour boiled water into the cup...");
+
+    setTimeout(function () {
+
+        console.log("4. " + boiledWater + " poured into the cup.");
+
+        callback("Water in cup");
+
+    }, 500);
+}
+
+
+function addCoffeeToCup(groundCoffee, callback) {
+
+    console.log("5. Starting to add ground coffee into the cup...");
+
+    setTimeout(function () {
+
+        console.log("5. " + groundCoffee + " added to the cup.");
+
+        callback("Coffee in cup");
+
+    }, 500);
+}
+
+
+function stirCoffee(coffeeInCup, callback) {
+
+    console.log("6. Starting to stir the coffee...");
+
+    setTimeout(function () {
+
+        console.log("6. " + coffeeInCup + " is stirred.");
+
+        callback("Final coffee");
+
+    }, 300);
+}
+
+
+function enjoyCoffee(finalCoffee) {
+
+    console.log("7. " + finalCoffee + " is ready. Enjoy your coffee!");
+
+}
+
+
+// Callback Hell
+
+startCoffeeMachine(function (coffeeMachineStatus) {
+
+    grindCoffeeBeans(function (groundCoffee) {
+
+        boilWater(function (boiledWater) {
+
+            pourBoilingWaterIntoCup(boiledWater, function (waterInCup) {
+
+                addCoffeeToCup(groundCoffee, function (coffeeInCup) {
+
+                    stirCoffee(coffeeInCup, function (finalCoffee) {
+
+                        enjoyCoffee(finalCoffee);
+
+                    });
+
+                });
+
+            });
+
+        });
+
+    });
+
+});
