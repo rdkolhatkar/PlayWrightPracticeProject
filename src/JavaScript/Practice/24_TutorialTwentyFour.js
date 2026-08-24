@@ -338,3 +338,244 @@ Promise.any([getMessage(), getUsers(), getProducts()])
 */
 // If all promises are rejected, it will return an AggregateError containing all the rejection reasons.
 
+// Promise Chaining with Async/Await in JavaScript: Async/Await is a syntactic sugar built on top of Promises that allows you to write asynchronous code in a more synchronous and readable manner. It makes it easier to work with Promises by allowing you to use the await keyword to pause the execution of an async function until a Promise is resolved or rejected.
+
+// Example of Promise Chaining in JavaScript:
+
+/*
+    All the below steps are asynchronous operations that need to be performed in sequence to make a cup of coffee.
+
+    1) Start the coffee machine -> 2 seconds
+    2) Grind the coffee beans -> 1 second
+    3) Boil water -> 1.5 seconds
+    4) Pour boiled water into the cup -> 0.5 second
+    5) Add ground coffee into the cup -> 0.5 second
+    6) Stir the coffee -> 0.3 second
+    7) Serve the coffee and enjoy
+*/
+
+// ---------------------------------------------------------------------------------------------------------
+
+
+// 1. Start Coffee Machine
+
+function startCoffeeMachine() {
+
+    return new Promise(function (resolve) {
+
+        console.log("1. Starting the coffee machine...");
+
+        setTimeout(function () {
+
+            console.log("1. Coffee machine is ready.");
+
+            resolve("Coffee machine is ready");
+
+        }, 2000);
+
+    });
+}
+
+
+// 2. Grind Coffee Beans
+
+function grindCoffeeBeans() {
+
+    return new Promise(function (resolve) {
+
+        console.log("2. Starting to grind coffee beans...");
+
+        setTimeout(function () {
+
+            console.log("2. Coffee beans are ground.");
+
+            resolve("Ground coffee");
+
+        }, 1000);
+
+    });
+}
+
+
+// 3. Boil Water
+
+function boilWater() {
+
+    return new Promise(function (resolve) {
+
+        console.log("3. Starting to boil water...");
+
+        setTimeout(function () {
+
+            console.log("3. Water is boiled.");
+
+            resolve("Boiled water");
+
+        }, 1500);
+
+    });
+}
+
+
+// 4. Pour Boiling Water Into Cup
+
+function pourBoilingWaterIntoCup(boiledWater) {
+
+    return new Promise(function (resolve) {
+
+        console.log("4. Starting to pour boiled water into the cup...");
+
+        setTimeout(function () {
+
+            console.log("4. " + boiledWater + " poured into the cup.");
+
+            resolve("Water in cup");
+
+        }, 500);
+
+    });
+}
+
+
+// 5. Add Coffee To Cup
+
+function addCoffeeToCup(groundCoffee) {
+
+    return new Promise(function (resolve) {
+
+        console.log("5. Starting to add ground coffee into the cup...");
+
+        setTimeout(function () {
+
+            console.log("5. " + groundCoffee + " added to the cup.");
+
+            resolve("Coffee in cup");
+
+        }, 500);
+
+    });
+}
+
+
+// 6. Stir Coffee
+
+function stirCoffee(coffeeInCup) {
+
+    return new Promise(function (resolve) {
+
+        console.log("6. Starting to stir the coffee...");
+
+        setTimeout(function () {
+
+            console.log("6. " + coffeeInCup + " is stirred.");
+
+            resolve("Final coffee");
+
+        }, 300);
+
+    });
+}
+
+
+// 7. Enjoy Coffee
+
+function enjoyCoffee(finalCoffee) {
+
+    console.log("7. " + finalCoffee + " is ready. Enjoy your coffee!");
+
+}
+
+
+// ---------------------------------------------------------------------------------------------------------
+// Promise Chaining
+// ---------------------------------------------------------------------------------------------------------
+
+startCoffeeMachine()
+
+    .then(function (coffeeMachineStatus) {
+
+        console.log("Received:", coffeeMachineStatus);
+
+        return grindCoffeeBeans();
+
+    })
+
+    .then(function (groundCoffee) {
+
+        console.log("Received:", groundCoffee);
+
+        return boilWater()
+            .then(function (boiledWater) {
+
+                return {
+                    groundCoffee: groundCoffee,
+                    boiledWater: boiledWater
+                };
+
+            });
+
+    })
+
+    .then(function (coffeeData) {
+
+        return pourBoilingWaterIntoCup(coffeeData.boiledWater)
+            .then(function (waterInCup) {
+
+                return {
+                    groundCoffee: coffeeData.groundCoffee,
+                    waterInCup: waterInCup
+                };
+
+            });
+
+    })
+
+    .then(function (coffeeData) {
+
+        return addCoffeeToCup(coffeeData.groundCoffee);
+
+    })
+
+    .then(function (coffeeInCup) {
+
+        return stirCoffee(coffeeInCup);
+
+    })
+
+    .then(function (finalCoffee) {
+
+        enjoyCoffee(finalCoffee);
+
+    })
+
+    .catch(function (error) {
+
+        console.log("Something went wrong:", error);
+
+    });
+
+    /*
+        Output:
+
+        1. Starting the coffee machine...
+        1. Coffee machine is ready.
+
+        2. Starting to grind coffee beans...
+        2. Coffee beans are ground.
+
+        3. Starting to boil water...
+        3. Water is boiled.
+
+        4. Starting to pour boiled water into the cup...
+        4. Boiled water poured into the cup.
+
+        5. Starting to add ground coffee into the cup...
+        5. Ground coffee added to the cup.
+
+        6. Starting to stir the coffee...
+        6. Coffee in cup is stirred.
+
+        7. Final coffee is ready. Enjoy your coffee!
+    */
+
+
