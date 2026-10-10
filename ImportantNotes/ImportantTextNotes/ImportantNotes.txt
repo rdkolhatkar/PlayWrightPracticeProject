@@ -13,8 +13,18 @@
 | Microsoft Edge             | EdgeDriver      | EdgeDriver               | Yes (Chromium)       | chromium.launch() |
 | Safari                     | SafariDriver    | SafariDriver             | ❌ Not Supported     | N/A               |
 | Internet Explorer (IE)     | IEDriverServer  | InternetExplorerDriver   | ❌ Not Supported     | N/A               |
-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Basic PlayWright SetUp
+1) To download the latest PlayWright version use command : npm install playwright --save-dev 
+2) To write the PlayWright Tests we need one more module to install that use command : npm install @playwright/test --save-dev 
+3) To install TypeScript use command : npm install typescript --save-dev 
+4) After installing the TypeScript you have to initialize the TypeScript in the Project for that use command : npx tsc --init 
+5) "npx tsc --init" this command will generate one "tsconfig.json" file and inside that file we have to add the { "target": "ES6" } under CompilerOptions where section for Language and Environment is Present.
+6) Make sure option "module" is set as "commonjs", Once confirmed save the Project
+7) After this add the PlayWright Test Runner Extension in Visual Studio Code which is developed by Microsoft 
+8) To run the PlayWright Project from terminal use command : npx playwright test --headed
+9) To run the tests in headless mode which is default mode in playwright use command : npx playwright test
 
 
 
