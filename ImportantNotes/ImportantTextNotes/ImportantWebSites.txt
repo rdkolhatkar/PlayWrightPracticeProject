@@ -1,0 +1,6 @@
+widely used practice sites:
+1) https://naveenautomationlabs.com/opencart/index.php
+2) https://www.saucedemo.com
+3) https://automationexercise.com
+4) https://parabank.parasoft.com
+5) https://www.globalsqa.com/angularJs-protractor/BankingProject

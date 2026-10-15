@@ -1,8 +1,11 @@
 // @ts-check
+// Playwright config for the JavaScript tests (src/JavaScript only).
+// Run with: npm run test:js   (or: npx playwright test --config=playwright.config.js)
+// The TypeScript tests have their own config in playwright.config.ts.
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
-  testDir: './src',
+  testDir: './src/JavaScript',
 
   timeout: 40 * 1000,
 

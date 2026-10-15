@@ -4,14 +4,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "orangeHRM": "npx playwright test src/JavaScript/Web/tests/BasicUiTestValidation.spec.js",
-    "test:RegistrationForm": "cucumber-js --profile RegistrationForm",
-    "test:OrangeHRM": "cucumber-js --profile OrangeHRM",
-    "test": "npx playwright test",
-    "debug": "cross-env PWDEBUG=1 cucumber-js --profile OrangeHRM",
+    "orangeHRM": "playwright test --config=playwright.config.js src/JavaScript/Web/tests/BasicUiTestValidation.spec.js",
+    "test:RegistrationForm": "cucumber-js --config cucumber.config.js --profile RegistrationForm",
+    "test:OrangeHRM": "cucumber-js --config cucumber.config.js --profile OrangeHRM",
+    "test:js": "playwright test --config=playwright.config.js",
+    "test:ts": "playwright test --config=playwright.config.ts",
+    "test": "npm run test:js && npm run test:ts",
+    "debug": "cross-env PWDEBUG=1 cucumber-js --config cucumber.config.js --profile OrangeHRM",
     "serenity:report": "npx serenity-js run",
     "serenity:open": "npx serenity-js serve",
-    "API:Test": "cucumber-js --profile API"
+    "API:Test": "cucumber-js --config cucumber.config.js --profile API"
   },
   "author": "Ratnakar Kolhatkar",
   "license": "ISC",
