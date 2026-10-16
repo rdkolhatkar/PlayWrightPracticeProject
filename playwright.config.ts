@@ -19,7 +19,9 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  // Only set workers on CI; leaving it out locally lets Playwright pick the default.
+  // (exactOptionalPropertyTypes in tsconfig forbids `workers: undefined`)
+  ...(process.env.CI ? { workers: 1 } : {}),
 
   // Report paths are kept separate from the JS config's reports
   reporter: [

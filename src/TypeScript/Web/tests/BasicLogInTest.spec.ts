@@ -1,3 +1,19 @@
+/*
+  To run this test, use the following command in the terminal:
+    -> npx playwright test src/TypeScript/Web/tests/BasicLogInTest.spec.ts
+  Other ways to run it:
+    # Shorter: Playwright matches part of the file name
+      -> npx playwright test BasicLogInTest
+
+    # Run only this test, picked by its title
+      -> npx playwright test -g "Basic Login Test"
+
+    # Step through it in the Playwright Inspector to debug
+      -> npx playwright test BasicLogInTest.spec.ts --debug
+
+    # Open the HTML report after the run
+      -> npx playwright show-report
+*/
 // ---------------------------------------------------------------------------
 // IMPORTS
 // ---------------------------------------------------------------------------
