@@ -28,6 +28,9 @@
 10) npx playwright test --project=chromium --project=firefox  
 → Runs tests on both Chromium and Firefox
 
+11) npx playwright show-report
+→ Opens the latest HTML test report (from the playwright-report folder) in a browser to view test results, errors, screenshots, and traces.
+
 ---------------------------------------------------------------------------------------------------------------------
 Important Commands to run JavaScript and TypeScript tests separately 
 1) If you run "npx playwright test" with no "--config" then it will use the default TypeScript config.
