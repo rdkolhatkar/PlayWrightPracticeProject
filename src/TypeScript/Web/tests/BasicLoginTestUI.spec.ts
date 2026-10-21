@@ -1,3 +1,5 @@
+// To run this test, use the following command in the terminal:
+// -> npx playwright test src/TypeScript/Web/tests/BasicLoginTestUI.spec.ts
 import {test, expect, type Browser, type Page, type Locator} from '@playwright/test';
 import { webkit, chromium, firefox } from 'playwright';
 
