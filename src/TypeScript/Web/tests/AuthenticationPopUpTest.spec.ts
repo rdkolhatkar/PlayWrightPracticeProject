@@ -25,7 +25,7 @@ test ('Authentication pop-up Test', async () => {
   // Passing the credentials in the URL
   await page.goto("https://admin:admin@the-internet.herokuapp.com/basic_auth");
 
-//   Using the 'httpCredentials' option when creating a new browser context
+  //  Using the 'httpCredentials' option when creating a new browser context
   const NewContext: BrowserContext = await browser.newContext({
     httpCredentials: {
         username: 'admin',
