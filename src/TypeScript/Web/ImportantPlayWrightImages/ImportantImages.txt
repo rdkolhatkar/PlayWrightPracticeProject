@@ -1,0 +1,9 @@
+
+1) UI authentication PopUp which generally asks us the username and password, is nothing but a API Basic Authentication which we use in backend.
+2) Refer the first 3 Postman API test images from "D:\PlayWrightPracticeProject\src\TypeScript\Web\ImportantPlayWrightImages\AuthenticationPopUpTestImages"
+3) In terms of BackEnd API we are passing the Request Header "Authorization" as Base64 String token which is an encrypted form of UI Authentication PopUp username and password.
+4) Internally browser is using this authentication PopUp to generate this encoded Base64 String token and call the backend API
+5) To verify this encoded Base64 String token for UI authentication PopUp, we can use the "btoa()" method in our browser console.
+6) Refer the image 4 from "D:\PlayWrightPracticeProject\src\TypeScript\Web\ImportantPlayWrightImages\AuthenticationPopUpTestImages"
+7) This "btoa()" method will take normal String parameters and convert them into encoded Base64 String.
+8) And this same thing we can achieve with our PlayWright code.

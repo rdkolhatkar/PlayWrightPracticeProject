@@ -19,7 +19,7 @@ test ('Authentication pop-up Test', async () => {
   const page = await context.newPage();
   // There are three ways to handle authentication pop-ups in Playwright:
   // 1. Using the 'httpCredentials' option when creating a new browser context. This is the recommended way to handle authentication pop-ups in Playwright.
-  // 2. Using the 'page.authenticate()' method. This is an alternative way to handle authentication pop-ups in Playwright.
+  // 2. Using btoa() function to encode the credentials in base64 and passing it in the 'Authorization' header. This is a less secure way to handle authentication pop-ups in Playwright and should be avoided if possible.
   // 3. Passing the credentials in the URL. This is a less secure way to handle authentication pop-ups in Playwright and should be avoided if possible.
 
   // Passing the credentials in the URL
@@ -34,6 +34,24 @@ test ('Authentication pop-up Test', async () => {
   });
   const NewPage = await NewContext.newPage();  
   await NewPage.goto("https://the-internet.herokuapp.com/basic_auth");  
+
+  // Using btoa() function to encode the credentials in base64 and passing it in the 'Authorization' header
+  const username = 'admin';
+  const password = 'admin';
+  const authHeader = 'Basic ' + Buffer.from(username + ':' + password).toString('base64');
+  // Another way is using btoa() function to encode the credentials in base64 and passing it in the 'Authorization' header
+  const authHeaderValue = 'Basic ' + btoa(username + ':' + password);
+  // First way
+  const NewContext2: BrowserContext = await browser.newContext({
+    extraHTTPHeaders: {
+      'Authorization': authHeader
+    }
+  });
+  const NewPage2 = await NewContext2.newPage();
+  await NewPage2.goto("https://the-internet.herokuapp.com/basic_auth");
+  // Second way
+  page.setExtraHTTPHeaders({'Authorization': authHeaderValue});
+  page.goto("https://the-internet.herokuapp.com/basic_auth");
 
   // Closing the browser contexts and the browser instance
   await context.close();
